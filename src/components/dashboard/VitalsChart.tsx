@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosConfig';
 
 interface VitalsData {
   date: string;
@@ -32,7 +32,7 @@ export default function VitalsChart({ patientId }: VitalsChartProps) {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/vitals`, {
+        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/vitals`, {
           withCredentials: true,
         });
         setData(response.data.vitals || []);

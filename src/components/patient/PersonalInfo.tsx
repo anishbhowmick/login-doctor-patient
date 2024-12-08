@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosConfig';
 import { Phone, User2, PhoneCall, Calendar, Droplet } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -23,7 +23,7 @@ export default function PersonalInfo({ patientId, editable, onChange }: Personal
   useEffect(() => {
     const fetchPatientInfo = async () => {
       try {
-        const response = await axios.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}`);
+        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}`);
         const patientData = response.data.patient;
         setInfo({
           fullName: `${patientData.firstName} ${patientData.lastName}`,

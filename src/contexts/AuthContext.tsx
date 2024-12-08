@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect }from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/axiosConfig';
 
 
 export interface Doctor {
@@ -51,13 +51,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       // Set the token in Axios headers
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
   }, []);
 
   const login = async (email: string, password: string, role: string) => {
     try {
-      const response = await axios.post('https://medical-backend-l140.onrender.com/api/login', { email, password, role });
+      const response = await axiosInstance.post('https://medical-backend-l140.onrender.com/api/login', { email, password, role });
 
       if (response.status === 200) {
         const { user, token } = response.data;
@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem('token', token);
 
         // Set the token in Axios headers
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         if (user.role === 'doctor') {
           setDoctor(user);
@@ -92,7 +92,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setPatient(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    delete axiosInstance.defaults.headers.common['Authorization'];
     window.location.replace('https://medical-webpage-front.vercel.app/');
   };
 
