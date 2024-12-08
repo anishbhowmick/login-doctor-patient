@@ -90,7 +90,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
       setLoadingPatient(true);
       setErrorPatient(null);
       try {
-        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}`, {
+        const response = await axiosInstance.get(`/api/patients/${patientId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`, // Adjust based on your auth implementation
           },
@@ -135,7 +135,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
       setLoadingPrescriptions(true);
       setErrorPrescriptions(null);
       try {
-        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/prescriptions`, {
+        const response = await axiosInstance.get(`/api/patients/${patientId}/prescriptions`, {
           headers: {
             Authorization: `Bearer ${getAuthToken()}`,
           },
@@ -158,7 +158,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
       setLoadingHistories(true);
       setErrorHistories(null);
       try {
-        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/histories`, {
+        const response = await axiosInstance.get(`/api/patients/${patientId}/histories`, {
           headers: {
             Authorization: `Bearer ${getAuthToken()}`,
           },
@@ -180,7 +180,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
       setLoadingAllergies(true);
       setErrorAllergies(null);
       try {
-        const response = await axiosInstance.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/allergies`, {
+        const response = await axiosInstance.get(`/api/patients/${patientId}/allergies`, {
           headers: {
             Authorization: `Bearer ${getAuthToken()}`,
           },
@@ -209,7 +209,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
 
     try {
       const response = await axiosInstance.post(
-        `https://medical-backend-l140.onrender.com/api/patients/${patientId}/prescriptions`,
+        `/api/patients/${patientId}/prescriptions`,
         newPrescription,
         {
           headers: {
@@ -242,7 +242,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
     if (!window.confirm('Are you sure you want to delete this prescription?')) return;
 
     try {
-      await axiosInstance.delete(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/prescriptions/${id}`, {
+      await axiosInstance.delete(`/api/patients/${patientId}/prescriptions/${id}`, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
         },
@@ -266,7 +266,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
 
     try {
       const response = await axiosInstance.post(
-        `https://medical-backend-l140.onrender.com/api/patients/${patientId}/histories`,
+        `/api/patients/${patientId}/histories`,
         newHistory,
         {
           headers: {
@@ -295,7 +295,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
     if (!window.confirm('Are you sure you want to delete this medical history?')) return;
 
     try {
-      await axiosInstance.delete(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/histories/${historyId}`, {
+      await axiosInstance.delete(`/api/patients/${patientId}/histories/${historyId}`, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
         },
@@ -319,7 +319,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
 
     try {
       const response = await axiosInstance.post(
-        `https://medical-backend-l140.onrender.com/api/patients/${patientId}/allergies`,
+        `/api/patients/${patientId}/allergies`,
         newAllergy,
         {
           headers: {
@@ -348,7 +348,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
     if (!window.confirm('Are you sure you want to delete this allergy?')) return;
 
     try {
-      await axiosInstance.delete(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/allergies/${allergyId}`, {
+      await axiosInstance.delete(`/api/patients/${patientId}/allergies/${allergyId}`, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
         },
@@ -366,7 +366,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
   const handleTreatmentSave = async () => {
     try {
       const response = await axiosInstance.put(
-        `https://medical-backend-l140.onrender.com/api/patients/${patientId}`,
+        `/api/patients/${patientId}`,
         { currentDiagnosis: treatmentInfo.currentDiagnosis },
         {
           headers: {
@@ -405,7 +405,7 @@ export default function PatientDetails({ patientId, onClose }: PatientDetailsPro
       );
 
       // Send PUT request to update patient data
-      const response = await axiosInstance.put(`https://medical-backend-l140.onrender.com/api/patients/${patientId}`, updatedData, {
+      const response = await axiosInstance.put(`/api/patients/${patientId}`, updatedData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`, // Adjust based on your auth implementation
         },

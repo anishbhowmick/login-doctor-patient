@@ -37,7 +37,7 @@ export default function PatientManagement() {
       setError(null);
 
       try {
-        const response = await axiosInstance.get('https://medical-backend-l140.onrender.com/api/patients/search', {
+        const response = await axiosInstance.get('/api/patients/search', {
           params: { query: searchTerm },
         });
 
