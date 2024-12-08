@@ -90,7 +90,7 @@ export default function HealthMetrics() {
     }
 
     try {
-      const response = await fetch(`/api/patients/${patient.id}/vitals`, {
+      const response = await fetch(`https://medical-backend-l140.onrender.com/api/patients/${patient.id}/vitals`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ export default function CurrentDiagnosis() {
       }
 
       try {
-        const response = await axios.get(`/api/patients/${patient.id}`);
+        const response = await axios.get(`https://medical-backend-l140.onrender.com/api/patients/${patient.id}`);
         const treatmentInfo: TreatmentInfo = response.data.patient.treatmentInfo;
 
         if (!treatmentInfo.currentDiagnosis || !treatmentInfo.lastUpdated) {

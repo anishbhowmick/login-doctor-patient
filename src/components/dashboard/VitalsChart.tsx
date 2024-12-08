@@ -32,7 +32,7 @@ export default function VitalsChart({ patientId }: VitalsChartProps) {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`/api/patients/${patientId}/vitals`, {
+        const response = await axios.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}/vitals`, {
           withCredentials: true,
         });
         setData(response.data.vitals || []);

@@ -57,7 +57,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string, role: string) => {
     try {
-      const response = await axios.post('/api/login', { email, password, role });
+      const response = await axios.post('https://medical-backend-l140.onrender.com/api/login', { email, password, role });
 
       if (response.status === 200) {
         const { user, token } = response.data;

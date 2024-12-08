@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuthToken } from './auth';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api', // Adjust based on your backend URL
+  baseURL: 'https://medical-backend-l140.onrender.com', // Set your backend URL here
   withCredentials: true, // Include cookies if needed
 });
 

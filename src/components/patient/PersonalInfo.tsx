@@ -23,7 +23,7 @@ export default function PersonalInfo({ patientId, editable, onChange }: Personal
   useEffect(() => {
     const fetchPatientInfo = async () => {
       try {
-        const response = await axios.get(`/api/patients/${patientId}`);
+        const response = await axios.get(`https://medical-backend-l140.onrender.com/api/patients/${patientId}`);
         const patientData = response.data.patient;
         setInfo({
           fullName: `${patientData.firstName} ${patientData.lastName}`,
